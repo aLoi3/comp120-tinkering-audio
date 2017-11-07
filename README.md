@@ -10,5 +10,5 @@ towns and caves.
 # Requirements
 * Generate different sounds depending on current environment
 * Create audio tracks incorperating the sounds for the environments
-* Save the audio tracks to be played as .wav files
+* Save the audio tracks to be played as .ogg files
 * Source fitting sounds to use
