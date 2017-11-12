@@ -12,3 +12,6 @@ towns and caves.
 * Create audio tracks incorperating the sounds for the environments
 * Save the audio tracks to be played as .ogg files
 * Source fitting sounds to use
+
+# Sound credits
+Sounds taken from zapsplat.com
