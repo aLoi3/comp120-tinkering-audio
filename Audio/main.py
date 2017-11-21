@@ -3,6 +3,8 @@ import pygame
 pygame.init()
 pygame.mixer.init()
 
+rect_width = 200
+rect_height = 150
 window_height = 300
 window_width = 800
 Window = (window_width, window_height)
@@ -11,6 +13,18 @@ white = (255, 255, 255)
 green = (50, 160, 50)
 
 screen = pygame.display.set_mode(Window)
+
+Cave = pygame.image.load("Images/cave.jpg")
+Cave = Cave.convert(32)
+Cave = pygame.transform.scale(Cave, (rect_width, rect_height))
+
+Forest = pygame.image.load("Images/forest.jpg")
+Forest = Forest.convert(32)
+Forest = pygame.transform.scale(Forest, (rect_width, rect_height))
+
+Town = pygame.image.load("Images/town.jpg")
+Town = Town.convert(32)
+Town = pygame.transform.scale(Town, (rect_width, rect_height))
 
 
 def text_surface(text, font, color):
@@ -27,15 +41,17 @@ def text_place(text, size, color, center_width, center_height):
 
 
 def choice_screen():
-    large_text = pygame.font.SysFont('arial', 50)
-    small_text = pygame.font.SysFont('arial', 25)
-    text_place("Choose your environment", small_text, white, window_width/2, window_height/8)
+    title = pygame.font.SysFont('arial', 50)
+    text_on_button = pygame.font.SysFont('arial', 35)
+    text_place("Choose your environment", title, white, window_width/2, window_height/8)
 
-    pygame.draw.rect(screen, green, (30, 100, 200, 150))
-    pygame.draw.rect(screen, green, (290, 100, 200, 150))
-    pygame.draw.rect(screen, green, (550, 100, 200, 150))
+    pygame.Surface.blit(screen, Cave, (30, 100, rect_width, rect_height))
+    pygame.Surface.blit(screen, Forest, (290, 100, rect_width, rect_height))
+    pygame.Surface.blit(screen, Town, (550, 100, rect_width, rect_height))
 
-
+    text_place("Cave", text_on_button, white, (30 + (200/2)), (100 + 170))
+    text_place("Forest", text_on_button, white, (290 + (200 / 2)), (100 + 170))
+    text_place("Town", text_on_button, white, (550 + (200 / 2)), (100 + 170))
 
 running = True
 choice_screen()
