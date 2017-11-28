@@ -12,7 +12,8 @@ class Play:
         self.set_channels()
 
     def play_base(self, location):
-        base = pygame.mixer.Sound('Sounds/',location,'.wav')
+        base = pygame.mixer.Sound('Sounds/', location, '.wav')
+        self.channel[0].play(base)
 
     def set_channels(self):
         pygame.mixer.set_num_channels(self.max_channels)
