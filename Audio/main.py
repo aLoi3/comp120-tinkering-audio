@@ -74,8 +74,11 @@ def choice_screen():
     text_place("Town", text_on_button, white, (550 + (rect_width / 2)), (100 + 170))
 
 # Main loop
+"""
+Change location variable and run program again to hear different environments currently
+"""
 running = True
-location = 'town'
+location = 'cave'  # Possible environments cave, forest, town
 choice_screen()
 pl = Play(location)
 pl.track_create(location)
