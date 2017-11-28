@@ -1,4 +1,6 @@
 import pygame
+import audioop
+import wave
 
 pygame.init()
 pygame.mixer.init()
@@ -12,24 +14,27 @@ Window = (window_width, window_height)
 white = (255, 255, 255)
 green = (50, 160, 50)
 
-good_sound = pygame.mixer.Sound('Sounds/lake_bird_chipping.wav')
-bad_sound = pygame.mixer.Sound('Sounds/wind_howl.wav')
-
-good_sound_array = pygame.sndarray.samples(good_sound)
-bad_sound_array = pygame.sndarray.samples(bad_sound)
-
 screen = pygame.display.set_mode(Window)
 
-def img_transform(image_location,size):
+#good_sound = pygame.mixer.Sound('Sounds/lake_bird_chipping.wav')
+#bad_sound = pygame.mixer.Sound('Sounds/wind_howl.wav')
+
+#good_sound_array = pygame.sndarray.samples(good_sound)
+#bad_sound_array = pygame.sndarray.samples(bad_sound)
+
+
+
+def img_transform(image_location, size):
     """loads image converts to 32bit transforms to the size and returns the image"""
     temp_img = pygame.image.load(image_location)
     temp_img = temp_img.convert(32)
     temp_img = pygame.transform.scale(temp_img, size)
     return temp_img
 
-Town = img_transform("Images/town.jpg",(rect_width, rect_height))
-Forest = img_transform("Images/forest.jpg",(rect_width, rect_height))
-Cave = img_transform("Images/cave.jpg",(rect_width, rect_height))
+Town = img_transform("Images/town.jpg", (rect_width, rect_height))
+Forest = img_transform("Images/forest.jpg", (rect_width, rect_height))
+Cave = img_transform("Images/cave.jpg", (rect_width, rect_height))
+
 
 def text_surface(text, font, color):
     """Renders font and returns it and the rect
@@ -59,13 +64,13 @@ def choice_screen():
 
 #def append_sounds():
 
-def combine_sounds(sound1, sound2):
-    values=[]
-    for i in range(0,len(sound1)):
-        values[i] = sound1 + sound2
-    return values
 
-combine_sounds(good_sound_array,bad_sound_array)
+#def combine_sounds(sound1, sound2):
+#    values = []
+#    for i in range(0, len(sound1)):
+#        sound1 =
+#    return values
+
 
 running = True
 choice_screen()
@@ -76,3 +81,6 @@ while running:
             running = False
     pygame.display.update()
 pygame.quit()
+
+
+#combine_sounds(good_sound_array, bad_sound_array)
