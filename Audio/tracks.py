@@ -35,7 +35,7 @@ class Play:
 
     def sound_select(self, location):
         """selects a random sound from the array of sounds dependant on location"""
-        random_number = random.randint(0,self.max_sounds - 1)
+        random_number = random.randint(0, self.max_sounds - 1)
         selected_sound = pygame.mixer.Sound(location[random_number])
         return selected_sound
 
