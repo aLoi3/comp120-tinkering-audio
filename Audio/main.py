@@ -55,8 +55,10 @@ def choice_screen():
     text_place("Town", text_on_button, white, (550 + (200 / 2)), (100 + 170))
 
 running = True
+location = 'town'
 choice_screen()
-Play()
+pl = Play(location)
+pl.track_create(location)
 
 while running:
     for event in pygame.event.get():
