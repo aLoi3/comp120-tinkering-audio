@@ -1,8 +1,10 @@
 import pygame
+import random
 
 
 class Play:
     max_channels = 10
+    max_sounds = 10
     channel = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     town = []
     cave = []
@@ -19,6 +21,12 @@ class Play:
         pygame.mixer.set_num_channels(self.max_channels)
         for i in range(0, self.max_channels - 1):
             self.channel[i] = pygame.mixer.Channel(i)
+
+    def sound_select(self, location):
+        random_number = random.randint(1,self.max_sounds - 1)
+        selected_sound = location[random_number]
+        return selected_sound
+
 
 
 
