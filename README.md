@@ -1,4 +1,5 @@
 # comp-120-tinkering-audio
+https://github.com/aLoi3/comp120-tinkering-audio
 # Ryan Clarke & Tomas Mazurkevic
 
 **Contract #4 - Ambient Audio Generation**
