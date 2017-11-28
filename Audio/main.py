@@ -1,4 +1,5 @@
 import pygame
+from tracks import *
 
 # Pygame initialisations
 pygame.init()
@@ -75,6 +76,7 @@ def choice_screen():
 # Main loop
 running = True
 choice_screen()
+Play()
 
 while running:
     for event in pygame.event.get():
