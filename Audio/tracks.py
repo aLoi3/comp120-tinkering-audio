@@ -1,55 +1,62 @@
 import pygame
 import random
 
+pygame.mixer.init()
+
 
 class Play:
     max_channels = 5
     max_sounds = 4
-    channel = [0, 0, 0, 0, 0]
-    town = ['Sounds/door_close.wav',
-            'Sounds/gravel_running.wav',
-            'Sounds/door_close.wav',
-            'Sounds/out_of_time.wav']
-    cave = ['Sounds/water_drip.wav',
-            'Sounds/wind_howl.wav',
-            'Sounds/footsteps_cave.wav',
-            'Sounds/bat_flap.wav']
-    forest = ['Sounds/lake_bird_chipping.wav',
-              'Sounds/door_close.wav',
-              'Sounds/door_close.wav',
-              'Sounds/out_of_time.wav']
+    channel0 = pygame.mixer.Channel(0)
+    channel1 = pygame.mixer.Channel(1)
+    channel2 = pygame.mixer.Channel(2)
+    channel3 = pygame.mixer.Channel(3)
+    channel4 = pygame.mixer.Channel(4)
 
     def __init__(self, location):
         self.set_channels()
+        print 'play init'
 
     def play_base(self, location):
-        """Selects the background sound for the current location"""
+        """
+        Selects the background sound for the current location
+        """
         base = pygame.mixer.Sound('Sounds/' + location + '.wav')
-        self.channel[0].play(base)
+        self.channel0.play(base)
+        print 'play base'
 
     def set_channels(self):
-        """Creates channels for the given max channels"""
+        """
+        Creates channels for the given max channels
+        """
         pygame.mixer.set_num_channels(self.max_channels)
-        for i in range(0, self.max_channels):
-            self.channel[i] = pygame.mixer.Channel(i)
 
     def sound_select(self, location):
-        """selects a random sound from the array of sounds dependant on location"""
+        """
+        selects a random sound dependant on location and plays it on its own channel
+        """
         random_number = random.randint(0, self.max_sounds - 1)
-        selected_sound = pygame.mixer.Sound(location[random_number])
-        return selected_sound
-
-    def play_sound(self, location, channel_number):
-        """Plays currently selected sound on the requested channel (never use channel 0)"""
-        current_sound = self.sound_select(location)
-        self.channel[channel_number].play(current_sound)
+        if random_number == 0:
+            pygame.mixer.Channel(1).play(pygame.mixer.Sound('Sounds/'+location+'1.wav'))
+        if random_number == 1:
+            pygame.mixer.Channel(2).play(pygame.mixer.Sound('Sounds/'+location+'2.wav'))
+        if random_number == 2:
+            pygame.mixer.Channel(3).play(pygame.mixer.Sound('Sounds/'+location+'3.wav'))
+        if random_number == 3:
+            pygame.mixer.Channel(4).play(pygame.mixer.Sound('Sounds/'+location+'4.wav'))
+        print 'sound selected'
 
     def track_create(self, location):
+        """
+        Pulls together other functions to play the track, uses a loop with a random wait
+        so that they are played at intervals
+        """
         self.play_base(location)
         for i in range(0, 10):
-            channel = random.randint(1, 5)
-            self.play_sound(location, channel)
-            pygame.time.wait(5000)
+            wait_time = random.randint(5000, 13000)
+            self.sound_select(location)
+            pygame.time.wait(wait_time)
+            print 'random sound ' + str(i)
 
 
 
