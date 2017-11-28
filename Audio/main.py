@@ -61,9 +61,9 @@ def choice_screen():
     Replaces rectangles with an appropriate image - cave, forest and town.
     Places text below images, describing what environment that is.
     """
-    title = pygame.font.SysFont('arial', 50)
+    title = pygame.font.SysFont('arial', 25)
     text_on_button = pygame.font.SysFont('arial', 35)
-    text_place("Choose your environment", title, white, window_width/2, window_height/8)
+    text_place("Choose your environment, press the corresponding number key", title, white, window_width/2, window_height/8)
 
     pygame.Surface.blit(screen, Cave, (30, 100, rect_width, rect_height))
     pygame.Surface.blit(screen, Forest, (290, 100, rect_width, rect_height))
@@ -73,20 +73,29 @@ def choice_screen():
     text_place("Forest", text_on_button, white, (290 + (rect_width / 2)), (100 + 170))
     text_place("Town", text_on_button, white, (550 + (rect_width / 2)), (100 + 170))
 
+    text_place("1", text_on_button, white, (30 + (rect_width / 2)), (100 + 80))
+    text_place("2", text_on_button, white, (290 + (rect_width / 2)), (100 + 80))
+    text_place("3", text_on_button, white, (550 + (rect_width / 2)), (100 + 80))
+
 # Main loop
 """
 Change location variable and run program again to hear different environments currently
 """
-running = True
-location = 'cave'  # Possible environments cave, forest, town
+running = True  # Possible environments cave, forest, town
 choice_screen()
-pl = Play(location)
-pl.track_create(location)
+pl = Play()
 
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_1:
+                pl.track_create('cave')
+            if event.key == pygame.K_2:
+                pl.track_create('forest')
+            if event.key == pygame.K_3:
+                pl.track_create('town')
     pygame.display.update()
 pygame.quit()
 

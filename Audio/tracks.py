@@ -13,7 +13,7 @@ class Play:
     channel3 = pygame.mixer.Channel(3)
     channel4 = pygame.mixer.Channel(4)
 
-    def __init__(self, location):
+    def __init__(self):
         self.set_channels()
         print 'play init'
 
