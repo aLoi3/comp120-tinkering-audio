@@ -69,7 +69,7 @@ def choice_screen():
     pygame.Surface.blit(screen, Forest, (290, 100, rect_width, rect_height))
     pygame.Surface.blit(screen, Town, (550, 100, rect_width, rect_height))
 
-    text_place("Cave", text_on_button, white, (30 + (rect_width/2)), (100 + 170))
+    text_place("Cave", text_on_button, white, (30 + (rect_width / 2)), (100 + 170))
     text_place("Forest", text_on_button, white, (290 + (rect_width / 2)), (100 + 170))
     text_place("Town", text_on_button, white, (550 + (rect_width / 2)), (100 + 170))
 

@@ -35,7 +35,7 @@ class Play:
         """
         selects a random sound dependant on location and plays it on its own channel
         """
-        random_number = random.randint(0,self.max_sounds - 1)
+        random_number = random.randint(0, self.max_sounds - 1)
         if random_number == 0:
             pygame.mixer.Channel(1).play(pygame.mixer.Sound('Sounds/'+location+'1.wav'))
         if random_number == 1:
