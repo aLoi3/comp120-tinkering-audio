@@ -12,9 +12,11 @@ class Play:
     channel2 = pygame.mixer.Channel(2)
     channel3 = pygame.mixer.Channel(3)
     channel4 = pygame.mixer.Channel(4)
+    # sound = False
 
-    def __init__(self):
+    def __init__(self, sound):
         self.set_channels()
+        self.sound = sound
         print 'play init'
 
     def play_base(self, location):
@@ -46,16 +48,22 @@ class Play:
             pygame.mixer.Channel(4).play(pygame.mixer.Sound('Sounds/'+location+'4.wav'))
         print 'sound selected'
 
-    def track_create(self, location):
+    def update(self, location):
         """
         Pulls together other functions to play the track, uses a loop with a random wait
         so that they are played at intervals
         """
+        self.sound = True
         self.play_base(location)
-        for i in range(0, 10):
-            wait_time = random.randint(5000, 13000)
-            self.sound_select(location)
-            pygame.time.wait(wait_time)
+        while self.sound:
+            for i in range(0, 10):
+                wait_time = random.randint(5000, 13000)
+                self.sound_select(location)
+                pygame.time.delay(wait_time)
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_0:
+                            self.sound = False
             print 'random sound ' + str(i)
 
 
