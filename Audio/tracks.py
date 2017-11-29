@@ -45,18 +45,8 @@ class Play:
         if random_number == 3:
             pygame.mixer.Channel(4).play(pygame.mixer.Sound('Sounds/'+location+'4.wav'))
         print 'sound selected'
+        print 'random sound playing now'
 
-    def track_create(self, location):
-        """
-        Pulls together other functions to play the track, uses a loop with a random wait
-        so that they are played at intervals
-        """
-        self.play_base(location)
-        for i in range(0, 10):
-            wait_time = random.randint(5000, 13000)
-            self.sound_select(location)
-            pygame.time.wait(wait_time)
-            print 'random sound ' + str(i)
 
 
 
