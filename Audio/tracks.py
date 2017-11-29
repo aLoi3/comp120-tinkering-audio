@@ -22,7 +22,7 @@ class Play:
         Selects the background sound for the current location
         """
         base = pygame.mixer.Sound('Sounds/' + location + '.wav')
-        self.channel0.play(base)
+        self.channel0.play(base, loops = -1)
         print 'play base'
 
     def set_channels(self):

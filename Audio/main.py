@@ -28,7 +28,6 @@ def update():
                     town_on = False
                     forest_on = True
                 if event.key == pygame.K_3:
-
                     pl.play_base('town')
                     cave_on = False
                     town_on = True
