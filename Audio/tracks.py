@@ -5,6 +5,15 @@ pygame.mixer.init()
 
 
 class Play:
+    """
+    Sets channels, chooses sound randomnly depending on
+    the chosen environment and plays it.
+
+Attributes:
+    max_channels (int): maximum amount of channels
+    max_sounds (int): maximum amount of sounds played
+    channel (pygame.mixer.Channel): five channels for sounds 
+    """
     max_channels = 5
     max_sounds = 4
     channel0 = pygame.mixer.Channel(0)
@@ -12,11 +21,9 @@ class Play:
     channel2 = pygame.mixer.Channel(2)
     channel3 = pygame.mixer.Channel(3)
     channel4 = pygame.mixer.Channel(4)
-    # sound = False
 
-    def __init__(self, sound):
+    def __init__(self):
         self.set_channels()
-        self.sound = sound
         print 'play init'
 
     def play_base(self, location):
@@ -24,7 +31,7 @@ class Play:
         Selects the background sound for the current location
         """
         base = pygame.mixer.Sound('Sounds/' + location + '.wav')
-        self.channel0.play(base, loops = -1)
+        self.channel0.play(base, loops=-1)
         print 'play base'
 
     def set_channels(self):

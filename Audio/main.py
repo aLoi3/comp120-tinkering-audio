@@ -14,18 +14,16 @@ pygame.mixer.init()
 
 # Main loop
 def update():
-    cave_on = False
-    town_on = False
-    forest_on = False
-    sound_interval = 10
-    t0 = time.time()  # initialize the t0 variable (base time)
+    cave_on = False  #
+    town_on = False  #
+    forest_on = False  #
+    sound_interval = 10  #
+    tick_time = time.time()  # initialize the t0 variable (base time)
     running = True
 
-    start_time = time.clock()
-    delta_time = 0.0
     while running:
-        t1 = time.time()  # calculate the time since some reference point (current time)
-        dt = t1 - t0  # calculate the difference in base and current time
+        last_time = time.time()  # calculate the time since some reference point (current time)
+        delta_time = last_time - tick_time  # calculate the difference in base and current time
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -45,15 +43,21 @@ def update():
                     cave_on = False
                     town_on = True
                     forest_on = False
-        if cave_on and dt >= sound_interval:
+
+        # Plays sound depending on the chosen environment
+        if cave_on and delta_time >= sound_interval:
             pl.sound_select('cave')
-            t0 = t1  # reset base time to current time
-        if town_on and dt >= sound_interval:
+            tick_time = last_time  # reset base time to current time
+        elif town_on and delta_time >= sound_interval:
             pl.sound_select('town')
-            t0 = t1  # reset base time to current time
-        if forest_on and dt >= sound_interval:
+            tick_time = last_time  # reset base time to current time
+        elif forest_on and delta_time >= sound_interval:
             pl.sound_select('forest')
-            t0 = t1  # reset base time to current time
+            tick_time = last_time  # reset base time to current time
+        elif pygame.event.type == pygame.KEYDOWN:
+                if pygame.event.key == pygame.K_0:
+                    break
+            
         pygame.display.update()
 
 
@@ -62,7 +66,7 @@ Change location variable and run program again to hear different environments cu
 """
 
 interface = Interface()
-pl = Play(sound)
+pl = Play()
 update()
 pygame.quit()
 
