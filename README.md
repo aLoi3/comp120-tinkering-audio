@@ -1,7 +1,9 @@
 # comp-120-tinkering-audio
-https://github.com/aLoi3/comp120-tinkering-audio
-All sounds used from https://freesound.org/
-All images used are under a free use licence
+Our repository https://github.com/aLoi3/comp120-tinkering-audio 
+
+All sounds used from https://freesound.org/ 
+
+All images used are under a free use licence 
 
 # Ryan Clarke & Tomas Mazurkevic
 
