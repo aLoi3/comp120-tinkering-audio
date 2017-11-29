@@ -18,7 +18,7 @@ def update():
 
     while running:
         last_time = time.time()  # calculate the time since some reference point (current time)
-        delta_time = last_time - tick_time  # calculate the difference in base and current time
+        time_difference = last_time - tick_time  # calculate the difference in base and current time
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -40,15 +40,15 @@ def update():
                     forest_on = False
 
         # Plays sound depending on the chosen environment
-        if cave_on and delta_time >= sound_interval:
+        if cave_on and time_difference >= sound_interval:
             pl.sound_selection('cave')
             tick_time = last_time  # reset base time to current time
             
-        if town_on and delta_time >= sound_interval:
+        if town_on and time_difference >= sound_interval:
             pl.sound_selection('town')
             tick_time = last_time  # reset base time to current time
             
-        if forest_on and delta_time >= sound_interval:
+        if forest_on and time_difference >= sound_interval:
             pl.sound_selection('forest')
             tick_time = last_time  # reset base time to current time
             
