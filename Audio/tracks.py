@@ -24,7 +24,7 @@ class Play:
         Selects the background sound for the current location
         """
         base = pygame.mixer.Sound('Sounds/' + location + '.wav')
-        self.channel0.play(base)
+        self.channel0.play(base, loops = -1)
         print 'play base'
 
     def set_channels(self):
@@ -47,24 +47,8 @@ class Play:
         if random_number == 3:
             pygame.mixer.Channel(4).play(pygame.mixer.Sound('Sounds/'+location+'4.wav'))
         print 'sound selected'
+        print 'random sound playing now'
 
-    def update(self, location):
-        """
-        Pulls together other functions to play the track, uses a loop with a random wait
-        so that they are played at intervals
-        """
-        self.sound = True
-        self.play_base(location)
-        while self.sound:
-            for i in range(0, 10):
-                wait_time = random.randint(5000, 13000)
-                self.sound_select(location)
-                pygame.time.delay(wait_time)
-                for event in pygame.event.get():
-                    if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_0:
-                            self.sound = False
-            print 'random sound ' + str(i)
 
 
 
