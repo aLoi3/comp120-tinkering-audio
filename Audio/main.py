@@ -2,19 +2,13 @@ import time
 from tracks import *
 from interface import *
 
-# sound = False
-delta_time = 0
-tick_time = 0
-start_time = 0
-sound = False
-
 # Pygame initialisations
 pygame.init()
 pygame.mixer.init()
 
 # Main loop
 def update():
-    cave_on = False  #
+    cave_on = False  # 
     town_on = False  #
     forest_on = False  #
     sound_interval = 10  #
@@ -48,15 +42,14 @@ def update():
         if cave_on and delta_time >= sound_interval:
             pl.sound_select('cave')
             tick_time = last_time  # reset base time to current time
-        elif town_on and delta_time >= sound_interval:
+            
+        if town_on and delta_time >= sound_interval:
             pl.sound_select('town')
             tick_time = last_time  # reset base time to current time
-        elif forest_on and delta_time >= sound_interval:
+            
+        if forest_on and delta_time >= sound_interval:
             pl.sound_select('forest')
             tick_time = last_time  # reset base time to current time
-        elif pygame.event.type == pygame.KEYDOWN:
-                if pygame.event.key == pygame.K_0:
-                    break
             
         pygame.display.update()
 
