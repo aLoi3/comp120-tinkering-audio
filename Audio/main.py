@@ -13,11 +13,11 @@ def update():
     town_on = False  # set to False on what track is currently playing
     forest_on = False  # set to False on what track is currently playing
     sound_interval = 10  # amount of second between a sound being played
-    tick_time = time.time()  # initialize the t0 variable (base time)
+    tick_time = time.time()  # sets base time
     running = True
 
     while running:
-        last_time = time.time()  # calculate the time since some reference point (current time)
+        last_time = time.time()  # sets current time
         time_difference = last_time - tick_time  # calculate the difference in base and current time
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
