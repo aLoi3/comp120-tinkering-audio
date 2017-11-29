@@ -24,8 +24,7 @@ class Play:
     channel4 = pygame.mixer.Channel(4)
 
     def __init__(self):
-        self.set_channels()
-        print 'play init'
+        self.channel_selection()
 
     def play_base(self, location):
         """
@@ -34,16 +33,15 @@ class Play:
         
         base = pygame.mixer.Sound('Sounds/' + location + '.wav')
         self.channel0.play(base, loops=-1)
-        print 'play base'
 
-    def set_channels(self):
+    def channel_selection(self):
         """
         Creates channels for the given max channels
         """
         
         pygame.mixer.set_num_channels(self.max_channels)
 
-    def sound_select(self, location):
+    def sound_selection(self, location):
         """
         selects a random sound dependant on location and plays it on its own channel
         """
@@ -58,8 +56,6 @@ class Play:
         if random_number == 3:
             pygame.mixer.Channel(4).play(pygame.mixer.Sound('Sounds/'+location+'4.wav'))
             
-        print 'sound selected'
-        print 'random sound playing now'
 
 
 

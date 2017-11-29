@@ -1,4 +1,5 @@
 import time
+
 from tracks import *
 from interface import *
 
@@ -8,10 +9,10 @@ pygame.mixer.init()
 
 # Main loop
 def update():
-    cave_on = False  # 
-    town_on = False  #
-    forest_on = False  #
-    sound_interval = 10  #
+    cave_on = False  # set to False on what track is currently playing
+    town_on = False  # set to False on what track is currently playing
+    forest_on = False  # set to False on what track is currently playing
+    sound_interval = 10  # amount of second between a sound being played
     tick_time = time.time()  # initialize the t0 variable (base time)
     running = True
 
@@ -40,23 +41,19 @@ def update():
 
         # Plays sound depending on the chosen environment
         if cave_on and delta_time >= sound_interval:
-            pl.sound_select('cave')
+            pl.sound_selection('cave')
             tick_time = last_time  # reset base time to current time
             
         if town_on and delta_time >= sound_interval:
-            pl.sound_select('town')
+            pl.sound_selection('town')
             tick_time = last_time  # reset base time to current time
             
         if forest_on and delta_time >= sound_interval:
-            pl.sound_select('forest')
+            pl.sound_selection('forest')
             tick_time = last_time  # reset base time to current time
             
         pygame.display.update()
 
-
-"""
-Change location variable and run program again to hear different environments currently
-"""
 
 interface = Interface()
 pl = Play()
