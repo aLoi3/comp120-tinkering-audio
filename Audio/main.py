@@ -7,6 +7,7 @@ def update():
     cave_on = False
     town_on = False
     forest_on = False
+    sound_interval = 10
     t0 = time.time()  # initialize the t0 variable (base time)
     running = True
     while running:
@@ -32,13 +33,13 @@ def update():
                     cave_on = False
                     town_on = True
                     forest_on = False
-        if cave_on and dt >= 10:
+        if cave_on and dt >= sound_interval:
             pl.sound_select('cave')
             t0 = t1  # reset base time to current time
-        if town_on and dt >= 10:
+        if town_on and dt >= sound_interval:
             pl.sound_select('town')
             t0 = t1  # reset base time to current time
-        if forest_on and dt >= 10:
+        if forest_on and dt >= sound_interval:
             pl.sound_select('forest')
             t0 = t1  # reset base time to current time
         pygame.display.update()
